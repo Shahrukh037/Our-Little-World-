@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff5f6">
+<title>Our Little World ♥️</title>
+
+<style>
+:root {
+  --pink: #e99bb0;
+  --deep: #a65d75;
+  --cream: #fff8f5;
+  --ink: #604650;
+  --muted: #987d86;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at 12% 12%, #ffe1e9, transparent 32%),
+    radial-gradient(circle at 90% 75%, #ffeadf, transparent 30%),
+    var(--cream);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 5%;
+  border-bottom: 1px solid #f2dce2;
+  background: #fff9f7dc;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  font-size: 17px;
+  color: var(--deep);
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+nav button {
+  border: 0;
+  background: transparent;
+  color: #936879;
+  padding: 9px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+nav button.active,
+nav button:hover {
+  background: #f8e2e8;
+  color: #88485f;
+}
+
+main {
+  min-height: calc(100vh - 75px);
+  display: grid;
+  place-items: center;
+  padding: 38px 18px 70px;
+}
+
+.page {
+  display: none;
+  width: min(720px, 100%);
+  text-align: center;
+  animation: fade .45s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  font: 11px Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  color: var(--deep);
+}
+
+h1 {
+  font-size: clamp(44px, 9vw, 82px);
+  line-height: 1.02;
+  font-weight: normal;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: clamp(34px, 7vw, 56px);
+  font-weight: normal;
+  margin: 15px 0 20px;
+}
+
+.accent {
+  color: var(--pink);
+  font-style: italic;
+}
+
+.copy {
+  max-width: 570px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.card {
+  padding: clamp(26px, 6vw, 50px);
+  border: 1px solid #efd2dc;
+  border-radius: 26px;
+  background: #ffffffb8;
+  box-shadow: 0 18px 55px #8f57690e;
+}
+
+.btn {
+  border: 1px solid #e8b6c4;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #eba4b8, #c87591);
+  color: white;
+  padding: 14px 24px;
+  margin: 24px 7px 0;
+  cursor: pointer;
+  font: 13px Arial, sans-serif;
+  letter-spacing: .03em;
+  box-shadow: 0 9px 22px #b9698425;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  background: #fff9f7;
+  color: var(--deep);
+  box-shadow: none;
+}
+
+.letter {
+  display: none;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 2;
+  font-size: 17px;
+  color: #755863;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #f0dbe1;
+}
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 28px auto 0;
+  max-width: 580px;
+}
+
+.reason {
+  background: #fffdfc;
+  border: 1px solid #f0d6df;
+  border-radius: 16px;
+  padding: 19px 12px;
+  line-height: 1.55;
+  color: #8e5d6e;
+}
+
+.promise {
+  font-size: clamp(22px, 4vw, 31px);
+  line-height: 1.7;
+}
+
+.page-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ead0d9;
+}
+
+.dot.active {
+  background: #bf7890;
+  width: 21px;
+  border-radius: 10px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -35px;
+  pointer-events: none;
+  color: #eaa0b4;
+  opacity: .55;
+  animation: float 8s linear forwards;
+  z-index: -1;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #b18a97;
+  font-size: 12px;
+}
+
+@media(max-width:520px) {
+  header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    justify-content: flex-start;
+  }
+
+  nav button {
+    padding: 8px 9px;
+  }
+
+  .reasons {
+    grid-template-columns: 1fr;
+  }
+
+  .copy {
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">A little world ♥️</div>
+
+  <nav>
+    <button class="active" data-page="home">Home</button>
+    <button data-page="letter">A Letter</button>
+    <button data-page="special">You</button>
+    <button data-page="promise">Our Promise</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- PAGE 1: HOME -->
+
+<section class="page active" id="home">
+
+  <div>
+    <div class="eyebrow">
+      A little place made just for you
+    </div>
+
+    <h1>
+      Our Little<br>
+      <span class="accent">World</span> ♥️
+    </h1>
+
+    <p class="copy"
+       style="font-size:20px;color:#b86f88;margin:-2px auto 16px">
+      Made especially for
+      <strong>My Kaju Katli ♥️</strong>
+    </p>
+
+    <p class="copy">
+      Some feelings are too special to fit into an ordinary message.
+      <br>
+      So I made this little corner of the internet for you.
+    </p>
+
+    <button class="btn" data-go="letter">
+      Open your surprise ♥️
+    </button>
+  </div>
+
+</section>
+
+
+<!-- PAGE 2: LOVE LETTER -->
+
+<section class="page" id="letter">
+
+  <div class="card">
+
+    <div class="eyebrow">
+      A few words from my heart
+    </div>
+
+    <h2>
+      A Letter <span class="accent">For You</span>
+    </h2>
+
+    <p class="copy">
+      There are things I want you to remember,
+      even on ordinary days.
+    </p>
+
+    <button class="btn" id="letterToggle">
+      Read my letter ♥️
+    </button>
+
+    <div class="letter" id="letterText">
+
+My favourite person,
+
+I may not always find the perfect words, but I hope you never doubt how much you mean to me.
+
+You bring warmth to my ordinary days, and every little moment with you becomes a memory I want to keep.
+
+I don't promise that every day will be perfect. I promise to keep listening, keep understanding, and keep treating what we share with care and respect.
+
+Thank you for being you. ♥️
+
+Always yours,
+Shahrukh 🫠
+
+    </div>
+
+    <div class="page-actions">
+      <button class="btn secondary" data-go="home">
+        ← Previous
+      </button>
+
+      <button class="btn" data-go="special">
+        Next ♥️
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 3: WHY YOU ARE SPECIAL -->
+
+<section class="page" id="special">
+
+  <div>
+
+    <div class="eyebrow">
+      Little things, big feelings
+    </div>
+
+    <h2>
+      Why You're <span class="accent">Special</span> ♥️
+    </h2>
+
+    <p class="copy">
+      A few reasons — and honestly,
+      this is only the beginning.
+    </p>
+
+    <div class="reasons">
+
+      <div class="reason">
+        Your Beautiful Laughter Makes My Day Brighter. ♥️
+        </div>
+
+      <div class="reason">
+        You make little moments matter.
+      </div>
+
+      <div class="reason">
+        I love the way you care.
+      </div>
+
+      <div class="reason">
+        I can be myself around you.
+      </div>
+
+      <div class="reason">
+        You make me feel understood.
+      </div>
+
+      <div class="reason">
+        There is no one quite like you.
+      </div>
+
+    </div>
+
+    <div class="page-actions">
+
+      <button class="btn secondary" data-go="letter">
+        ← Previous
+      </button>
+
+      <button class="btn" data-go="promise">
+        Next ♥️
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 4: OUR PROMISE -->
+
+<section class="page" id="promise">
+
+  <div class="card">
+
+    <div class="eyebrow">
+      One promise, every day
+    </div>
+
+    <h2>
+      Our <span class="accent">Promise</span> ♥️
+    </h2>
+
+    <p class="promise">
+      “Whatever life brings,
+      <br>
+      let's keep choosing honesty,
+      <br>
+      kindness, patience and each other.”
+    </p>
+
+    <p class="copy">
+      Not just words for today — a reminder
+      to care for what we have, one day at a time.
+    </p>
+
+    <p style="margin-top:28px;color:#bd7890;font-size:22px">
+      Made with love, just for you ♥️
+    </p>
+
+    <div class="page-actions">
+
+      <button class="btn secondary" data-go="special">
+        ← Previous
+      </button>
+
+      <button class="btn" data-go="home">
+        Chalo, zindagi saath mein jiyein...♥️
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="dots">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+</main>
+
+<footer>
+  A little world, made with love ♥️
+</footer>
+
+<script>
+
+const pageNames = [
+  'home',
+  'letter',
+  'special',
+  'promise'
+];
+
+const navButtons = [
+  ...document.querySelectorAll('nav button')
+];
+
+const pages = pageNames.map(
+  id => document.getElementById(id)
+);
+
+const dots = [
+  ...document.querySelectorAll('.dot')
+];
+
+function showPage(name) {
+
+  const index = pageNames.indexOf(name);
+
+  if (index < 0) return;
+
+  pages.forEach((page, i) => {
+    page.classList.toggle('active', i === index);
+  });
+
+  navButtons.forEach(button => {
+    button.classList.toggle(
+      'active',
+      button.dataset.page === name
+    );
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+
+  history.replaceState(null, '', '#' + name);
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+
+// TOP NAVIGATION
+
+navButtons.forEach(button => {
+
+  button.addEventListener('click', () => {
+    showPage(button.dataset.page);
+  });
+
+});
+
+
+// PREVIOUS AND NEXT BUTTONS
+
+document.querySelectorAll('[data-go]').forEach(button => {
+
+  button.addEventListener('click', () => {
+    showPage(button.dataset.go);
+  });
+
+});
+
+
+// LETTER OPEN/CLOSE
+
+const letterToggle =
+  document.getElementById('letterToggle');
+
+const letterText =
+  document.getElementById('letterText');
+
+letterToggle.addEventListener('click', () => {
+
+  const open = letterText.style.display === 'block';
+
+  letterText.style.display = open ? 'none' : 'block';
+
+  letterToggle.textContent = open
+    ? 'Read my letter ♥️'
+    : 'Close letter ♥️';
+
+});
+
+
+// RESTORE PAGE FROM URL
+
+const initial = location.hash.slice(1);
+
+if (pageNames.includes(initial)) {
+  showPage(initial);
+}
+
+
+// FLOATING HEARTS
+
+function makeHeart() {
+
+  const heart = document.createElement('span');
+
+  heart.className = 'heart';
+
+  heart.textContent = '♥️';
+
+  heart.style.left =
+    Math.random() * 100 + 'vw';
+
+  heart.style.fontSize =
+    (14 + Math.random() * 18) + 'px';
+
+  heart.style.animationDuration =
+    (6 + Math.random() * 5) + 's';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 11000);
+
+}
+
+setInterval(makeHeart, 1500);
+
+</script>
+
+</body>
+  </html>
+  
